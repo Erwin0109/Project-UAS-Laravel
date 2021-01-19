@@ -15,7 +15,7 @@ class AuthController extends Controller{
 		if(Auth::attempt(['username' => request('username'), 'password' => request('password')])){
 			$user = Auth::user();
 			if($user->level == 1) return redirect('beranda/admin')->with('success', 'Selamat Datang ...');
-			if($user->level == 0) return redirect('beranda/pengguna')->with('success', 'Selamat Datang ...');
+			if($user->level == 0) return redirect('home')->with('success', 'Selamat Datang ...');
 		} else{
 			return back()->with('danger', 'Login Gagal, Silahkan Coba Lagi');
 		}
